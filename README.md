@@ -10,6 +10,8 @@ An open-source, ad-free mood tracker with micro note-taking. Minimalistic UI wit
 
 ---
 
+[![GitHub Release](https://img.shields.io/github/release/piquecode/MicroMood.svg?labelColor=27303D&color=3f719b&label=GitHub&logo=GitHub)](https://github.com/piquecode/MicroMood/releases)
+
 </div>
 
 ## Features
