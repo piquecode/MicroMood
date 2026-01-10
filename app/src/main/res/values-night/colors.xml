@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- AMOLED Pure Black Theme -->
+    
+    <!-- Backgrounds -->
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorBackground">#000000</color>        <!-- Pure black for AMOLED -->
+    <color name="colorCard">#1C1C1C</color>              <!-- Slightly brighter - visible at medium brightness -->
+    <color name="colorCardBorder">#212121</color>        <!-- Visible border -->
+    
+    <!-- Interactive Elements -->
+    <color name="colorButton">#212121</color>            <!-- Match border for consistency -->
+    <color name="colorButtonPressed">#2C2C2C</color>     
+    
+    <!-- Text & Icons -->
+    <color name="colorIcon">#FFFFFF</color>              
+    <color name="colorDisabled">#666666</color>          
+    
+    <!-- Vibrant Mood Colors -->
+    <color name="colorMood1">#A4D65E</color>             
+    <color name="colorMood2">#E0F05C</color>             
+    <color name="colorMood3">#FFD54F</color>             
+    <color name="colorMood4">#FFB74D</color>             
+    <color name="colorMood5">#FF8A65</color>
+    
+    <!-- Time Picker Colors for Dark Mode -->
+    <color name="colorTimePickerText">#FFFFFF</color>  <!-- White text for dark mode -->             
+</resources>

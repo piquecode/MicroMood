@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/colorCard">
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorIcon"
+        android:layout_marginBottom="12dp"/>
+
+    <!-- Mood Buttons Row - Reversed: Worst (left) to Best (right) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="12dp">
+
+        <ImageView
+            android:id="@+id/widget_mood_5"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_mood_5"
+            android:contentDescription="@string/mood_5"
+            android:padding="4dp"/>
+
+        <ImageView
+            android:id="@+id/widget_mood_4"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_mood_4"
+            android:contentDescription="@string/mood_4"
+            android:padding="4dp"/>
+
+        <ImageView
+            android:id="@+id/widget_mood_3"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_mood_3"
+            android:contentDescription="@string/mood_3"
+            android:padding="4dp"/>
+
+        <ImageView
+            android:id="@+id/widget_mood_2"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_mood_2"
+            android:contentDescription="@string/mood_2"
+            android:padding="4dp"/>
+
+        <ImageView
+            android:id="@+id/widget_mood_1"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_mood_1"
+            android:contentDescription="@string/mood_1"
+            android:padding="4dp"/>
+
+    </LinearLayout>
+
+    <!-- Divider - Using ImageView with background color instead of View -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorCardBorder"
+        android:layout_marginBottom="12dp"
+        android:contentDescription="@string/app_name"/>
+
+    <!-- Notes Section -->
+    <LinearLayout
+        android:id="@+id/widget_notes_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="?android:selectableItemBackground">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_pencil"
+            android:tint="@color/colorIcon"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/notes"/>
+
+        <TextView
+            android:id="@+id/widget_notes_indicator"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/add_note"
+            android:textColor="@color/colorIcon"
+            android:textSize="14sp"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_check"
+            android:tint="@color/colorIcon"
+            android:contentDescription="@string/open_notes"/>
+
+    </LinearLayout>
+
+</LinearLayout>

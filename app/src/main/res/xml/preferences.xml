@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <CheckBoxPreference
+            android:key="@string/key_should_log_crashes"
+            android:title="@string/send_crash_reports"
+            android:summary="@string/crash_report_prompt"
+            app:iconSpaceReserved="false"/>
+
+    <ListPreference
+            android:key="@string/key_theme"
+            android:title="@string/theme"
+            app:useSimpleSummaryProvider="true"
+            android:entries="@array/theme_entries"
+            android:entryValues="@array/theme_values"
+            android:defaultValue="@string/system"
+            app:iconSpaceReserved="false"/>
+
+
+</PreferenceScreen>

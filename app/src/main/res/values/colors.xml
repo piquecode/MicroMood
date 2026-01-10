@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Clean Light Theme -->
+    
+    <!-- Backgrounds -->
+    <color name="colorPrimary">#555354</color>
+    <color name="colorBackground">#F5F5F5</color>        <!-- Slightly warmer gray -->
+    <color name="colorCard">#FFFFFF</color>              <!-- Pure white cards -->
+    <color name="colorCardBorder">#E0E0E0</color>        <!-- Softer border -->
+    
+    <!-- Interactive Elements -->
+    <color name="colorButton">#F5F6F8</color>            <!-- Light gray buttons -->
+    <color name="colorButtonPressed">#EEEEEE</color>     <!-- Darker when pressed -->
+    
+    <!-- Text & Icons -->
+    <color name="colorIcon">#333333</color>              <!-- Darker for better contrast -->
+    <color name="colorDisabled">#BDBDBD</color>          <!-- Lighter disabled state -->
+    
+    <!-- Vibrant Mood Colors (Same as dark mode) -->
+    <color name="colorMood1">#A4D65E</color>             <!-- Bright green (very happy) -->
+    <color name="colorMood2">#E0F05C</color>             <!-- Lime yellow (happy) -->
+    <color name="colorMood3">#FFD54F</color>             <!-- Golden yellow (neutral) -->
+    <color name="colorMood4">#FFB74D</color>             <!-- Orange (sad) -->
+    <color name="colorMood5">#FF8A65</color>             <!-- Coral red (very sad) -->
+    
+    <!-- Time Picker Colors -->
+    <color name="colorTimePickerText">#333333</color>  <!-- Dark text for light mode -->
+</resources>
