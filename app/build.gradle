@@ -10,6 +10,17 @@ android {
     compileSdk 34
 
     def apiKeys = loadApiKeys()
+    
+    // Load keystore properties
+    def keystorePropertiesFile = rootProject.file("keystore.properties")
+    def keystoreProperties = new Properties()
+    def hasKeystore = false
+    
+    if (keystorePropertiesFile.exists()) {
+        keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+        hasKeystore = keystoreProperties['storeFile'] != null && 
+                      new File(keystoreProperties['storeFile']).exists()
+    }
 
     defaultConfig {
         applicationId "com.piquecode.micromood"
@@ -23,10 +34,29 @@ android {
         buildConfigField "String", "SENTRY_DSN", apiKeys['SENTRY_DSN']
     }
 
+    signingConfigs {
+        release {
+            if (hasKeystore) {
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+                storeFile file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+            }
+        }
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            if (hasKeystore) {
+                signingConfig signingConfigs.release
+            }
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
         }
     }
 
@@ -46,6 +76,7 @@ android {
     }
 
     buildFeatures {
+        buildConfig = true
         dataBinding true
         compose true
     }
@@ -135,6 +166,11 @@ kapt {
 
 static def loadApiKeys() {
     Properties properties = new Properties()
-    properties.load(new FileInputStream(new File("secrets.properties")))
+    File secretsFile = new File("secrets.properties")
+    if (secretsFile.exists()) {
+        properties.load(new FileInputStream(secretsFile))
+    } else {
+        properties.setProperty('SENTRY_DSN', '""')
+    }
     return properties
 }
