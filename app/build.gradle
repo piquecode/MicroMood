@@ -8,7 +8,14 @@ plugins {
 android {
     namespace 'com.piquecode.micromood'
     compileSdk 34
-
+    
+    dependenciesInfo {
+        // Disables dependency metadata when building APKs (for IzzyOnDroid/F-Droid)
+        includeInApk = false
+        // Disables dependency metadata when building Android App Bundles (for Google Play)
+        includeInBundle = false
+    }
+    
     def apiKeys = loadApiKeys()
     
     // Load keystore properties
