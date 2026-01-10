@@ -6,13 +6,7 @@ An open-source, ad-free mood tracker with micro note-taking. Minimalistic UI wit
 
 ---
 
-<div style="overflow-x: auto; white-space: nowrap;">
-  <img src="screenshot/01_home.png" width="200" style="display: inline-block;" />
-  <img src="screenshot/02_darkmode.png" width="200" style="display: inline-block;" />
-  <img src="screenshot/03_datepicker.png" width="200" style="display: inline-block;" />
-  <img src="screenshot/04_exportcsv.png" width="200" style="display: inline-block;" />
-  <img src="screenshot/05_reminder.png" width="200" style="display: inline-block;" />
-</div>
+<img src="screenshot/01_home.png" width="150" /> <img src="screenshot/02_darkmode.png" width="150" /> <img src="screenshot/03_datepicker.png" width="150" /> <img src="screenshot/04_exportcsv.png" width="150" /> <img src="screenshot/05_reminder.png" width="150" />
 
 ---
 
