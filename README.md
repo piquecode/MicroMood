@@ -6,7 +6,7 @@ An open-source, ad-free mood tracker with micro note-taking. Minimalistic UI wit
 
 ---
 
-<img src="screenshots/01_home.png" width="200" /> <img src="screenshots/02_darkmode.png" width="200" /> <img src="screenshots/03_datepicker.png" width="200" /> <img src="screenshots/04_exportcsv.png" width="200" /> <img src="screenshots/05_reminder.png" width="200" />
+<img src="screenshot/01_home.png" width="200" /> <img src="screenshot/02_darkmode.png" width="200" /> <img src="screenshot/03_datepicker.png" width="200" /> <img src="screenshot/04_exportcsv.png" width="200" /> <img src="screenshot/05_reminder.png" width="200" />
 
 ---
 
@@ -16,10 +16,10 @@ An open-source, ad-free mood tracker with micro note-taking. Minimalistic UI wit
 
 - **Simple Mood Tracking** - Quick one-tap mood selection with optional micro-notes
 - **Date Picker** - Review and log moods for any past date
-- **Dark Mode Support** - Automatic theme switching for comfortable viewing
 - **Data Export** - Export your mood history to CSV for external analysis
-- **Data Import** - Import your old CSV to migrate to a new device
+- **Data Import** - Import your old mood history CSV to migrate to a new device
 - **Reminder System** - Set daily reminders to maintain tracking consistency
+- **Dark Mode Support** - Automatic theme switching for comfortable viewing
 - **Privacy First** - All data stored locally on your device
 - **No Ads, No Tracking** - Completely free and open-source
 - **Material Design** - Clean, modern interface following Android design guidelines
