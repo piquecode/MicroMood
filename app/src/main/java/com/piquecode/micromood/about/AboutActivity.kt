@@ -19,71 +19,89 @@ import nl.dionsegijn.konfetti.models.Size
 class AboutActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAboutBinding
 
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            binding = ActivityAboutBinding.inflate(layoutInflater)
-            setContentView(binding.root)
-            initialiseView()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityAboutBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        initialiseView()
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
+    private fun initialiseView() {
+        title = null
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.elevation = 0f
+
+        binding.aboutWrapper.setBackgroundColor(
+            ContextCompat.getColor(this, R.color.colorBackground)
+        )
+
+        binding.contact.setOnClickListener { startEmailIntent() }
+        binding.website.setOnClickListener { startWebsiteIntent(WEBSITE) }
+        binding.contribute.setOnClickListener { startWebsiteIntent(REPO) }
+        binding.appIcon.setOnLongClickListener { showConfetti(it) }
+    }
+
+    private fun startEmailIntent() {
+        val title = getString(R.string.query)
+        val uri = Uri.parse(MAIL_TO)
+        val emailIntent = Intent(Intent.ACTION_SENDTO, uri).apply {
+            putExtra(Intent.EXTRA_EMAIL, arrayOf(EMAIL))
+            putExtra(Intent.EXTRA_SUBJECT, title)
+        }
+        startActivity(Intent.createChooser(emailIntent, title))
+    }
+
+    private fun startWebsiteIntent(website: String) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(website))
+        startActivity(intent)
+    }
+
+    private fun showConfetti(it: View): Boolean {
+        val location = IntArray(2)
+        it.getLocationInWindow(location)
+
+        val drawable1 = ContextCompat.getDrawable(this, R.drawable.ic_mood_1)?.apply {
+            setTint(ContextCompat.getColor(this@AboutActivity, R.color.colorMood1))
+        }
+        val drawable2 = ContextCompat.getDrawable(this, R.drawable.ic_mood_2)?.apply {
+            setTint(ContextCompat.getColor(this@AboutActivity, R.color.colorMood2))
+        }
+        val drawable3 = ContextCompat.getDrawable(this, R.drawable.ic_mood_3)?.apply {
+            setTint(ContextCompat.getColor(this@AboutActivity, R.color.colorMood3))
+        }
+        val drawable4 = ContextCompat.getDrawable(this, R.drawable.ic_mood_4)?.apply {
+            setTint(ContextCompat.getColor(this@AboutActivity, R.color.colorMood4))
+        }
+        val drawable5 = ContextCompat.getDrawable(this, R.drawable.ic_mood_5)?.apply {
+            setTint(ContextCompat.getColor(this@AboutActivity, R.color.colorMood5))
         }
 
-        override fun onSupportNavigateUp(): Boolean {
-            onBackPressed()
-            return true
+        val shapes = mutableListOf<Shape>()
+        drawable1?.let { shapes.add(Shape.DrawableShape(it, false)) }
+        drawable2?.let { shapes.add(Shape.DrawableShape(it, false)) }
+        drawable3?.let { shapes.add(Shape.DrawableShape(it, false)) }
+        drawable4?.let { shapes.add(Shape.DrawableShape(it, false)) }
+        drawable5?.let { shapes.add(Shape.DrawableShape(it, false)) }
+
+        if (shapes.isEmpty()) {
+            shapes.add(Shape.Circle)
         }
 
-        private fun initialiseView() {
-            // Set up toolbar to match MainActivity style
-            title = null
-            supportActionBar?.setDisplayHomeAsUpEnabled(true)
-            supportActionBar?.elevation = 0f
-
-            // Apply theme-aware background color
-            binding.aboutWrapper.setBackgroundColor(
-                ContextCompat.getColor(this, R.color.colorBackground)
-            )
-
-            binding.contact.setOnClickListener { startEmailIntent() }
-            binding.website.setOnClickListener { startWebsiteIntent(WEBSITE) }
-            binding.contribute.setOnClickListener { startWebsiteIntent(REPO) }
-            binding.appIcon.setOnLongClickListener { showConfetti(it) }
-        }
-
-        private fun startEmailIntent() {
-            val title = getString(R.string.query)
-            val uri = Uri.parse(MAIL_TO)
-            val emailIntent = Intent(Intent.ACTION_SENDTO, uri).apply {
-                putExtra(Intent.EXTRA_EMAIL, arrayOf(EMAIL))
-                putExtra(Intent.EXTRA_SUBJECT, title)
-            }
-            startActivity(Intent.createChooser(emailIntent, title))
-        }
-
-        private fun startWebsiteIntent(website: String) {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(website))
-            startActivity(intent)
-        }
-
-        private fun showConfetti(it: View): Boolean {
-            val location = IntArray(2)
-            it.getLocationInWindow(location)
-
-            // Use mood colors from your theme for confetti
-            binding.confetti.build()
-            .addColors(
-                ContextCompat.getColor(this, R.color.colorMood1),
-                       ContextCompat.getColor(this, R.color.colorMood2),
-                       ContextCompat.getColor(this, R.color.colorMood3),
-                       ContextCompat.getColor(this, R.color.colorMood4),
-                       ContextCompat.getColor(this, R.color.colorMood5)
-            )
+        binding.confetti.build()
             .setDirection(0.0, 360.0)
             .setSpeed(7f, 20f)
             .setFadeOutEnabled(true)
             .setTimeToLive(2000L)
-            .addShapes(Shape.Square, Shape.Circle)
+            .addShapes(*shapes.toTypedArray())
             .addSizes(Size(12))
             .setPosition(location[0].toFloat() + it.width / 2, location[1].toFloat())
             .burst(100)
-            return true
-        }
+
+        return true
+    }
 }
