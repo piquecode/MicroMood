@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_weekly_summary"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    style="@style/Card">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/weekly_summary_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/weekly_summary_title"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="?android:attr/textColorPrimary"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Streak Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/streak_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/streak_label"
+                android:textSize="14sp"
+                android:textColor="?android:attr/textColorPrimary" />
+
+            <TextView
+                android:id="@+id/streak_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/streak_day"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginStart="8dp" />
+
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorDisabled"
+            android:layout_marginBottom="16dp" />
+
+        <!-- This Week Label -->
+        <TextView
+            android:id="@+id/this_week_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/this_week_label"
+            android:textSize="14sp"
+            android:textColor="?android:attr/textColorPrimary"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Mood Frequency List -->
+        <LinearLayout
+            android:id="@+id/mood_frequency_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Mood 1 (Great) -->
+            <LinearLayout
+                android:id="@+id/mood_1_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="6dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/mood_1_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@drawable/ic_mood_1"
+                    app:tint="@color/colorMood1" />
+
+                <TextView
+                    android:id="@+id/mood_1_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorMood1"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="8dp"
+                    android:minWidth="24dp" />
+
+                <TextView
+                    android:id="@+id/mood_1_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/mood_great"
+                    android:textSize="14sp"
+                    android:textColor="?android:attr/textColorPrimary" />
+
+            </LinearLayout>
+
+            <!-- Mood 2 (Good) -->
+            <LinearLayout
+                android:id="@+id/mood_2_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="6dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/mood_2_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@drawable/ic_mood_2"
+                    app:tint="@color/colorMood2" />
+
+                <TextView
+                    android:id="@+id/mood_2_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorMood2"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="8dp"
+                    android:minWidth="24dp" />
+
+                <TextView
+                    android:id="@+id/mood_2_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/mood_good"
+                    android:textSize="14sp"
+                    android:textColor="?android:attr/textColorPrimary" />
+
+            </LinearLayout>
+
+            <!-- Mood 3 (Okay) -->
+            <LinearLayout
+                android:id="@+id/mood_3_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="6dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/mood_3_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@drawable/ic_mood_3"
+                    app:tint="@color/colorMood3" />
+
+                <TextView
+                    android:id="@+id/mood_3_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorMood3"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="8dp"
+                    android:minWidth="24dp" />
+
+                <TextView
+                    android:id="@+id/mood_3_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/mood_okay"
+                    android:textSize="14sp"
+                    android:textColor="?android:attr/textColorPrimary" />
+
+            </LinearLayout>
+
+            <!-- Mood 4 (Bad) -->
+            <LinearLayout
+                android:id="@+id/mood_4_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="6dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/mood_4_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@drawable/ic_mood_4"
+                    app:tint="@color/colorMood4" />
+
+                <TextView
+                    android:id="@+id/mood_4_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorMood4"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="8dp"
+                    android:minWidth="24dp" />
+
+                <TextView
+                    android:id="@+id/mood_4_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/mood_bad"
+                    android:textSize="14sp"
+                    android:textColor="?android:attr/textColorPrimary" />
+
+            </LinearLayout>
+
+            <!-- Mood 5 (Terrible) -->
+            <LinearLayout
+                android:id="@+id/mood_5_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="6dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/mood_5_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@drawable/ic_mood_5"
+                    app:tint="@color/colorMood5" />
+
+                <TextView
+                    android:id="@+id/mood_5_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorMood5"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="8dp"
+                    android:minWidth="24dp" />
+
+                <TextView
+                    android:id="@+id/mood_5_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/mood_terrible"
+                    android:textSize="14sp"
+                    android:textColor="?android:attr/textColorPrimary" />
+
+            </LinearLayout>
+
+            <!-- Empty state message -->
+            <TextView
+                android:id="@+id/empty_week_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/empty_week"
+                android:textSize="14sp"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textStyle="italic"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:paddingVertical="8dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
