@@ -25,6 +25,20 @@
     <string name="very_sad">Very sad</string>
     <string name="sad">Sad</string>
     <string name="happy">Happy</string>
+    
+    <!-- Weekly Summary Card -->
+    <string name="weekly_summary_title">Weekly Summary</string>
+    <string name="streak_label">Daily Streak</string>
+    <string name="this_week_label">This Week</string>
+    <string name="streak_days">%d days</string>
+    <string name="streak_day">1 day</string>
+    <string name="mood_great">days feeling terrible</string>
+    <string name="mood_good">days feeling </string>
+    <string name="mood_okay">days feeling okay</string>
+    <string name="mood_bad">days feeling bad</string>
+    <string name="mood_terrible">days feeling terrible</string>
+    <string name="empty_week">No moods recorded this week</string>
+    
     <string name="export">Export CSV</string>
     <string name="import_csv">Import CSV</string>
     <string name="settings">Settings</string>
