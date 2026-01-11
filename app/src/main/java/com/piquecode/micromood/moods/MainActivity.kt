@@ -1,5 +1,6 @@
 package com.piquecode.micromood.moods
 
+import com.piquecode.micromood.util.WeeklySummaryHelper
 import android.content.Context
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -69,7 +70,6 @@ class MainActivity : AppCompatActivity() {
     getDefaultSharedPreferences(this)
         .registerOnSharedPreferenceChangeListener(darkModePreferenceWatcher)
     
-    // Handle widget intent to focus notes
     if (intent?.getBooleanExtra("focus_notes", false) == true) {
         binding.notesInput.requestFocus()
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as android.view.inputmethod.InputMethodManager
@@ -139,6 +139,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.moods.observe(this) { moods ->
             updateCalendar(moods)
             binding.chart.addMoods(moods, getColor(this, R.color.colorPrimary))
+            updateWeeklySummary(moods)
         }
 
         viewModel.selectedDate.observe(this) { 
@@ -156,6 +157,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun updateWeeklySummary(moods: List<Mood>) {
+        val card = findViewById<View>(R.id.card_weekly_summary)
+        WeeklySummaryHelper.updateWeeklySummaryCard(card, moods)
+    }
+
     private fun updateNotesForSelectedDate() {
         viewModel.currentMoodWithNotes.value?.let { mood ->
             binding.notesInput.setText(mood.notes ?: "")
@@ -165,8 +171,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showDatePicker() {
+        val constraintsBuilder = com.google.android.material.datepicker.CalendarConstraints.Builder()
+            .setValidator(com.google.android.material.datepicker.DateValidatorPointBackward.now())
+        
         MaterialDatePicker.Builder
             .datePicker()
+            .setSelection(viewModel.selectedDate.value?.time ?: System.currentTimeMillis())
+            .setCalendarConstraints(constraintsBuilder.build())
             .build()
             .apply {
                 addOnPositiveButtonClickListener {
@@ -180,9 +191,26 @@ class MainActivity : AppCompatActivity() {
         val date = viewModel.selectedDate.value ?: return
         binding.calendar.apply {
             setDate(date.toCalendar())
+            setMaximumDate(java.util.Calendar.getInstance())
+            
             setOnDayClickListener(object : OnDayClickListener {
                 override fun onDayClick(eventDay: EventDay) {
-                    viewModel.selectedDate.value = eventDay.calendar.time
+                    val selectedDate = eventDay.calendar.time
+                    val today = java.util.Calendar.getInstance().apply {
+                        set(java.util.Calendar.HOUR_OF_DAY, 23)
+                        set(java.util.Calendar.MINUTE, 59)
+                        set(java.util.Calendar.SECOND, 59)
+                    }.time
+                    
+                    if (!selectedDate.after(today)) {
+                        viewModel.selectedDate.value = selectedDate
+                    } else {
+                        android.widget.Toast.makeText(
+                            this@MainActivity,
+                            "No magic crystal to predict the future!",
+                            android.widget.Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
             })
 
@@ -246,7 +274,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun createMoodFile(event: Event<String>?): File? {
     return event?.unhandledData?.let { csvData ->
-        // Check if CSV has notes
         val hasNotes = csvData.lines().drop(1).any { line ->
             val parts = line.split(",")
             parts.size >= 3 && parts[2].isNotBlank()
@@ -405,12 +432,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showTimePicker(hour: Int, minute: Int) {
-        // Use themed TimePickerDialog for better visibility
         val picker = android.app.TimePickerDialog(
             this,
-            R.style.TimePickerTheme,  // Apply custom theme
+            R.style.TimePickerTheme,
             { _, selectedHour, selectedMinute ->
-            // Check notification permission for Android 13+
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
                 if (checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS)
                     != android.content.pm.PackageManager.PERMISSION_GRANTED) {
@@ -427,7 +452,7 @@ class MainActivity : AppCompatActivity() {
         },
         hour,
         minute,
-        true // 24-hour format
+        true
     )
     picker.show()
     }
