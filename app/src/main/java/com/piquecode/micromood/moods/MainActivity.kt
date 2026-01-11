@@ -275,8 +275,11 @@ class MainActivity : AppCompatActivity() {
     private fun createMoodFile(event: Event<String>?): File? {
     return event?.unhandledData?.let { csvData ->
         val hasNotes = csvData.lines().drop(1).any { line ->
+            if (line.isBlank()) return@any false
             val parts = line.split(",")
-            parts.size >= 3 && parts[2].isNotBlank()
+            if (parts.size < 3) return@any false
+            val notes = parts[2].trim().removeSurrounding("\"")
+            notes.isNotEmpty()
         }
         val notesLabel = if (hasNotes) "notes" else "nonotes"
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
