@@ -23,6 +23,18 @@
     <color name="colorMood4">#FFB74D</color>             <!-- Orange (sad) -->
     <color name="colorMood5">#FF8A65</color>             <!-- Coral red (very sad) -->
     
+    <!-- Tag Chip Colors - Light Mode -->
+    <color name="tag_chip_selected_bg">#E3F2FD</color>
+    <!-- Light blue tint -->
+    <color name="tag_chip_selected_stroke">#1976D2</color>
+    <!-- Blue stroke -->
+    <color name="tag_chip_default_stroke">#BDBDBD</color>
+    <!-- Gray stroke -->
+    <color name="tag_chip_selected_text">#0D47A1</color>
+    <!-- Dark blue text -->
+    <color name="tag_chip_default_text">#616161</color>
+    <!-- Dark gray text -->
+
     <!-- Time Picker Colors -->
     <color name="colorTimePickerText">#333333</color>  <!-- Dark text for light mode -->
 </resources>

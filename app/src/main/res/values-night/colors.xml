@@ -23,6 +23,18 @@
     <color name="colorMood4">#FFB74D</color>             
     <color name="colorMood5">#FF8A65</color>
     
+    <!-- Tag Chip Colors - Dark Mode -->
+    <color name="tag_chip_selected_bg">#1A237E</color>
+    <!-- Dark blue tint -->
+    <color name="tag_chip_selected_stroke">#64B5F6</color>
+    <!-- Light blue stroke -->
+    <color name="tag_chip_default_stroke">#757575</color>
+    <!-- Light gray stroke -->
+    <color name="tag_chip_selected_text">#90CAF9</color>
+    <!-- Light blue text -->
+    <color name="tag_chip_default_text">#E0E0E0</color>
+    <!-- Light gray text -->
+    
     <!-- Time Picker Colors for Dark Mode -->
     <color name="colorTimePickerText">#FFFFFF</color>  <!-- White text for dark mode -->             
 </resources>

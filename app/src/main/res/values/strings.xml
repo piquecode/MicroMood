@@ -38,7 +38,7 @@
     <string name="mood_bad">days feeling bad</string>
     <string name="mood_terrible">days feeling terrible</string>
     <string name="empty_week">No moods recorded this week</string>
-    
+    <string name="weekly_insight_placeholder">Check in daily to see your weekly insights!</string>
     <string name="export">Export CSV</string>
     <string name="import_csv">Import CSV</string>
     <string name="settings">Settings</string>
