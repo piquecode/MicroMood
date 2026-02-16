@@ -10,5 +10,7 @@ data class Mood(
     @PrimaryKey val date: Date,
     val mood: Int,
     @ColumnInfo(name = "notes")
-    val notes: String? = null
+    val notes: String? = null,
+    @ColumnInfo(name = "tags")
+    val tags: String? = null  // Comma-separated tags: "happy,excited,grateful"
 )
